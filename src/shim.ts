@@ -11,11 +11,10 @@
 
 // @ts-nocheck — wasm-bindgen glue has no TS types
 
-// CF Workers: importing a .wasm gives us a WebAssembly.Module
-import wasmModule from "@biscuit-auth/biscuit-wasm/module/biscuit_bg.wasm"
-
 // wasm-bindgen JS glue from the npm package
 import * as bg from "@biscuit-auth/biscuit-wasm/module/biscuit_bg.js"
+// CF Workers: importing a .wasm gives us a WebAssembly.Module
+import wasmModule from "@biscuit-auth/biscuit-wasm/module/biscuit_bg.wasm"
 
 // Collect all __wbg_* and __wbindgen_* functions as WASM imports.
 // wasm-bindgen uses "./biscuit_bg.js" as the import module name.
@@ -57,18 +56,18 @@ start()
 
 // Re-export everything from the JS glue (Biscuit, KeyPair, PublicKey, etc.)
 export {
+	AuthorizerBuilder,
 	Biscuit,
 	BiscuitBuilder,
 	BlockBuilder,
+	Check,
+	Fact,
 	KeyPair,
+	Policy,
 	PrivateKey,
 	PublicKey,
-	AuthorizerBuilder,
-	SignatureAlgorithm,
-	Fact,
 	Rule,
-	Check,
-	Policy,
+	SignatureAlgorithm,
 } from "@biscuit-auth/biscuit-wasm/module/biscuit_bg.js"
 
 // --- Tagged template helpers (from upstream biscuit.js) ---

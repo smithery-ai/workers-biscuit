@@ -5,22 +5,21 @@
  * WASM shim, plus tagged template helpers for writing Datalog.
  */
 
+export { generateKeyPair } from "./helpers.js"
 export {
+	AuthorizerBuilder,
+	authorizer,
 	Biscuit,
 	BiscuitBuilder,
 	BlockBuilder,
-	KeyPair,
-	PrivateKey,
-	PublicKey,
-	AuthorizerBuilder,
-	SignatureAlgorithm,
-	Fact,
-	Rule,
-	Check,
-	Policy,
 	biscuit,
 	block,
-	authorizer,
+	Check,
+	Fact,
+	KeyPair,
+	Policy,
+	PrivateKey,
+	PublicKey,
+	Rule,
+	SignatureAlgorithm,
 } from "./shim.js"
-
-export { generateKeyPair } from "./helpers.js"

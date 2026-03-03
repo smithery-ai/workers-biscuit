@@ -62,18 +62,18 @@ start()
 
 // Re-export everything from the JS glue (Biscuit, KeyPair, PublicKey, etc.)
 export {
+	AuthorizerBuilder,
 	Biscuit,
 	BiscuitBuilder,
 	BlockBuilder,
+	Check,
+	Fact,
 	KeyPair,
+	Policy,
 	PrivateKey,
 	PublicKey,
-	AuthorizerBuilder,
-	SignatureAlgorithm,
-	Fact,
 	Rule,
-	Check,
-	Policy,
+	SignatureAlgorithm,
 } from "@biscuit-auth/biscuit-wasm/module/biscuit_bg.js"
 
 // --- Tagged template helpers (from upstream biscuit.js) ---

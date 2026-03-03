@@ -6,28 +6,28 @@
  */
 
 export {
+	AuthorizerBuilder,
+	authorizer,
 	Biscuit,
 	BiscuitBuilder,
 	BlockBuilder,
-	KeyPair,
-	PrivateKey,
-	PublicKey,
-	AuthorizerBuilder,
-	SignatureAlgorithm,
-	Fact,
-	Rule,
-	Check,
-	Policy,
 	biscuit,
 	block,
-	authorizer,
+	Check,
+	Fact,
+	KeyPair,
+	Policy,
+	PrivateKey,
+	PublicKey,
+	Rule,
+	SignatureAlgorithm,
 } from "./shim-node.js"
 
 import {
 	KeyPair,
-	SignatureAlgorithm,
 	type PrivateKey,
 	type PublicKey,
+	SignatureAlgorithm,
 } from "./shim-node.js"
 
 export function generateKeyPair() {

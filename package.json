@@ -13,6 +13,8 @@
 		"build": "tsc",
 		"check-types": "tsc --noEmit",
 		"test": "vitest run",
+		"check": "biome check",
+		"fmt": "biome check --write --unsafe",
 		"prepublishOnly": "pnpm build"
 	},
 	"exports": {
@@ -34,6 +36,7 @@
 		"@biscuit-auth/biscuit-wasm": "0.6.0"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "2.3.3",
 		"@types/node": "^20.11.19",
 		"typescript": "latest",
 		"vite-plugin-wasm": "^3.5.0",

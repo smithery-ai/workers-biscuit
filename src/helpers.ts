@@ -1,8 +1,8 @@
 import {
 	KeyPair,
-	SignatureAlgorithm,
 	type PrivateKey,
 	type PublicKey,
+	SignatureAlgorithm,
 } from "./shim.js"
 
 export function generateKeyPair() {

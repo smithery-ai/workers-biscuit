@@ -1,9 +1,8 @@
-import { describe, it, expect, beforeAll } from "vitest"
-
 // Use npm package directly for Node.js test environment
 // (the WASM shim is for CF Workers only)
 // @ts-expect-error — biscuit-wasm types are loose
-import { Biscuit, KeyPair, AuthorizerBuilder } from "@biscuit-auth/biscuit-wasm"
+import { AuthorizerBuilder, Biscuit, KeyPair } from "@biscuit-auth/biscuit-wasm"
+import { beforeAll, describe, expect, it } from "vitest"
 
 function setup() {
 	const kp = new KeyPair("Ed25519")
