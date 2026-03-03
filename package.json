@@ -1,0 +1,47 @@
+{
+	"name": "@smithery/biscuit",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Cloudflare Workers adapter for @biscuit-auth/biscuit-wasm",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/smithery-ai/workers-biscuit.git"
+	},
+	"scripts": {
+		"dev": "tsc --watch",
+		"build": "tsc",
+		"check-types": "tsc --noEmit",
+		"test": "vitest run",
+		"prepublishOnly": "pnpm build"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"workerd": "./dist/index.js",
+			"default": "./dist/index-node.js"
+		},
+		"./shim": {
+			"types": "./dist/shim.d.ts",
+			"workerd": "./dist/shim.js",
+			"default": "./dist/shim-node.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"@biscuit-auth/biscuit-wasm": "0.6.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.19",
+		"typescript": "latest",
+		"vite-plugin-wasm": "^3.5.0",
+		"vitest": "^3.2.4"
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"@biscuit-auth/biscuit-wasm@0.6.0": "patches/@biscuit-auth__biscuit-wasm@0.6.0.patch"
+		}
+	}
+}
