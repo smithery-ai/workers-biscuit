@@ -25,6 +25,13 @@ for (const [key, value] of Object.entries(bg)) {
 	}
 }
 
+// Silence the "biscuit wasm" console.log emitted during WASM init
+for (const key of Object.keys(wasmImports)) {
+	if (key.startsWith("__wbg_log_")) {
+		wasmImports[key] = () => {}
+	}
+}
+
 // The WASM binary also imports from snippet modules (all just performance.now())
 const snippetExports = { performance_now: () => performance.now() }
 const snippetModules = [
