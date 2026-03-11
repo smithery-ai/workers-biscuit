@@ -12,6 +12,7 @@
 
 import { readFileSync } from "node:fs"
 import { createRequire } from "node:module"
+import { runWasmStart } from "./start.js"
 
 // Node.js: read the WASM binary from the npm package on disk
 const _require = createRequire(import.meta.url)
@@ -29,13 +30,6 @@ const wasmImports: Record<string, unknown> = {}
 for (const [key, value] of Object.entries(bg)) {
 	if (key.startsWith("__wbg_") || key.startsWith("__wbindgen_")) {
 		wasmImports[key] = value
-	}
-}
-
-// Silence the "biscuit wasm" console.log emitted during WASM init
-for (const key of Object.keys(wasmImports)) {
-	if (key.startsWith("__wbg_log_")) {
-		wasmImports[key] = () => {}
 	}
 }
 
@@ -65,7 +59,7 @@ bg.__wbg_set_wasm(instance.exports)
 
 // Run the wasm-bindgen start function to initialize
 const start = instance.exports.__wbindgen_start as () => void
-start()
+runWasmStart(start)
 
 // Re-export everything from the JS glue (Biscuit, KeyPair, PublicKey, etc.)
 export {
