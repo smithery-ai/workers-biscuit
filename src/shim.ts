@@ -10,11 +10,11 @@
  */
 
 // @ts-nocheck — wasm-bindgen glue has no TS types
-
 // wasm-bindgen JS glue from the npm package
 import * as bg from "@biscuit-auth/biscuit-wasm/module/biscuit_bg.js"
 // CF Workers: importing a .wasm gives us a WebAssembly.Module
 import wasmModule from "@biscuit-auth/biscuit-wasm/module/biscuit_bg.wasm"
+import { runWasmStart } from "./start.js"
 
 // Collect all __wbg_* and __wbindgen_* functions as WASM imports.
 // wasm-bindgen uses "./biscuit_bg.js" as the import module name.
@@ -52,7 +52,7 @@ bg.__wbg_set_wasm(instance.exports)
 
 // Run the wasm-bindgen start function to initialize
 const start = instance.exports.__wbindgen_start as () => void
-start()
+runWasmStart(start)
 
 // Re-export everything from the JS glue (Biscuit, KeyPair, PublicKey, etc.)
 export {

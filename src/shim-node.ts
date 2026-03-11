@@ -12,6 +12,7 @@
 
 import { readFileSync } from "node:fs"
 import { createRequire } from "node:module"
+import { runWasmStart } from "./start.js"
 
 // Node.js: read the WASM binary from the npm package on disk
 const _require = createRequire(import.meta.url)
@@ -58,7 +59,7 @@ bg.__wbg_set_wasm(instance.exports)
 
 // Run the wasm-bindgen start function to initialize
 const start = instance.exports.__wbindgen_start as () => void
-start()
+runWasmStart(start)
 
 // Re-export everything from the JS glue (Biscuit, KeyPair, PublicKey, etc.)
 export {
